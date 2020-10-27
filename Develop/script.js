@@ -15,20 +15,21 @@ var arrNames = ["UpperCase", "lowerCase", "numb", "special"]
 
 // Write password to the #password input
 function writePassword() {
-for (var i = 0, len = charNames.length; i < len; i++){
-  var charSelection = charNames[i]
-  var arrChoice = arrNames[i]
-  var arrChoice = confirm("Would you like to use " + charSelection + " ?")
-  if (arrChoice) {
-    alert("You chose to use " + charSelection)
+  for (var i = 0, len = charNames.length; i < len; i++){
+    var charSelection = charNames[i]
+    var arrChoice = arrNames[i]
+    var arrChoice = confirm("Would you like to use " + charSelection + " ?")
+
+    if (arrChoice) {
+      alert("You chose to use " + charSelection)
+    }
+    else{
+      var remove = passwordArr.indexOf(passwordArr[0])
+      passwordArr.splice(remove, 1)
+      alert("You chose not to use " + charSelection)
+      console.log(passwordArr[0][0]) 
+    }
   }
-  else{
-    var remove = passwordArr.indexOf(passwordArr[i])
-    passwordArr.splice(remove, 1)
-    alert("You chose not to use " + charSelection)
-    console.log(passwordArr[0][0]) 
-  }
-}
 }
 
 
