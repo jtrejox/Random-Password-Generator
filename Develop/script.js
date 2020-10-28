@@ -15,84 +15,63 @@ var arrNames = ["UpperCase", "lowerCase", "numb", "special"]
 
 // Write password to the #password input
 function writePassword() {
+  var arrcount = 3;
+  var passwordArr = [upperArr, lowerArr, numbersArr, specialArr]
   for (var i = 0, len = charNames.length; i < len; i++){
-    var charSelection = charNames[i]
-    var arrChoice = arrNames[i]
-    var arrChoice = confirm("Would you like to use " + charSelection + " ?")
+    var charSelection = charNames[i];
+    var arrChoice = arrNames[i];
+    
+    var arrChoice = confirm("Would you like to use " + charSelection + " ?");
 
     if (arrChoice) {
-      alert("You chose to use " + charSelection)
+      alert("You chose to use " + charSelection);
+    }
+    else {
+      var remove = passwordArr.indexOf(passwordArr[0]);
+      passwordArr.splice(remove, 1);
+      alert("You chose not to use " + charSelection);
+      // console.log(passwordArr[0][0]) ;
+      // console.log(arrcount)
+      --arrcount;
+    }
+    if (arrcount === 0){
+      alert("You must chose at least 1 set of characters");
+    }
+  }  
+
+  for (var i = 1; i > 0;){
+    var passwordLength = prompt("how long would you like your Password to be?(Must be between 8 and 128 characters")
+    if (passwordLength >= 7 && passwordLength <= 128){
+      alert("You've chosen a " + passwordLength + " character long password");
+      console.log(passwordLength)
+      break;
     }
     else{
-      var remove = passwordArr.indexOf(passwordArr[0])
-      passwordArr.splice(remove, 1)
-      alert("You chose not to use " + charSelection)
-      console.log(passwordArr[0][0]) 
+      alert("Invalid Input");
     }
   }
 }
 
 
+function generatePassword(){
+  for (var i = 0, len = passwordLength.length; i > len;i++ ){
+  function randomNum(x){return Math.floor(Math.random() * x)}
+  var pswrdArr = []
 
-//   var upperCase = confirm('Would you like to use "UPPER CASE" characters in your password? Press OK for YES or CANCEL for NO')
-//   if (upperCase){
-//     alert('you chose to use "UPPER CASE" characters')
-//   }
-//     else{
-//      var remove = passwordArr.indexOf[upperArr]
-//       passwordArr.splice(remove, 1)
-//     alert('You chose not to use "UPPER CASE" characters')
-//     console.log(passwordArr[0][0])  
-//   }
-
+  var pickedArr = randomNum(passwordArr.length)
+  var char = passwordArr[pickedArr][randomNum(pickedArr.length)]
+  pswrdArr.splice(0, 0, char)
+  }
+  var password = pswrdArr.join("")
+  return password
+}  
   
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 
-//   var lowerCase = confirm('Would you like to use "lower case" characters in your password? Press OK for YES or CANCEL for NO')
-//   if (lowerCase){
-//     alert('you chose to use "lower case" characters')
-//   }  
-//   else{
-//     var remove = passwordArr.indexOf[lowerArr]
-//     passwordArr.splice(remove, 1)
-//     alert('You chose not to use "lower case" characters')  
-//     console.log(passwordArr[0][0])  
-//   }
 
-  
 
-//   var numbers = confirm('Would you like to use "numbers (eg. 1234)" in your password? Press OK for YES or CANCEL for NO')
-//   if (numbers){
-//     alert('you chose to use "numbers"')
-//   }
-//   else{
-//     var remove = passwordArr.indexOf[numbersArr]
-//     passwordArr.splice(remove, 1)
-//     alert('You chose not to use "numbers"')
-//     console.log(passwordArr[0][0])  
-//   }
-
-  
-
-//   var special = confirm('Would you like to use "Special Characters (eg.@!$%)" in your password? Press OK for YES or CANCEL for NO')
-//   if (special){
-//     alert('you chose to use "Special Characters"')
-//   }
-//   else{
-//     var remove = passwordArr.indexOf[specialArr]
-//     passwordArr.splice(remove, 1)
-//     alert('You chose not to use "Special Characters"')
-//     console.log(passwordArr[0][0])  
-  
-
-  
-  // var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
-
-  // passwordText.value = password;
-
-// }
-
-// Add event listener to generate button
+// Add eventlistener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// console.log(passwordArr)  
+// generatePassword()
