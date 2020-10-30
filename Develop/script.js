@@ -7,12 +7,9 @@ var specialArr = ["!", "#", "$", "$", "%", "^", "&", "*", "(", ")", "+", "=", "-
 var upperArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var lowerArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var numbersArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-// var passwordArr = [upperArr, lowerArr, numbersArr, specialArr]
 var charNames = ['"UPPER CASE" characters', '"lower case" characters', 'numbers', '"Special" Characters (eg.@#$...)']
 var arrNames = [upperArr, lowerArr, numbersArr, specialArr]
 var charCompare = ""
-// var password = ""
-// console.log(upperArr.map(name => name.toLowerCase)
 
 
 // Write password to the #password input
@@ -71,8 +68,8 @@ function generatePassword(passwordLength, passwordArr){
   for (var i = 0; i < passwordLength;i++ ){
     var selected = randomNum(passwordArr.length)
     var char = passwordArr[selected][randomNum(passwordArr[selected].length)];
-    if(char === charCompare){generatePassword(passwordLength, passwordArr)}
-    charCompare = char
+    // if(char === charCompare){generatePassword(passwordLength, passwordArr)}
+    // charCompare = char
      pswrdArr.splice(0, 0, char);
      pass = pswrdArr.join("");
   }
